@@ -1,8 +1,8 @@
 import React from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 
-import Input from '../Input';
-import { InputProps } from '../Input.types';
+import Input from '../components/Input';
+import { InputProps } from '../components/Input.types';
 
 export default {
   title: 'Input',
