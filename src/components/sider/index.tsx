@@ -4,6 +4,11 @@ import Sider from "antd/es/layout/Sider";
 import {Menu, MenuProps} from "antd";
 import { LaptopOutlined, NotificationOutlined, UserOutlined } from '@ant-design/icons';
 
+export interface DP_SiderProps extends SiderProps{
+
+}
+
+
 const items2: MenuProps['items'] = [UserOutlined, LaptopOutlined, NotificationOutlined].map(
     (icon, index) => {
         const key = String(index + 1);
@@ -23,7 +28,7 @@ const items2: MenuProps['items'] = [UserOutlined, LaptopOutlined, NotificationOu
         };
     },
 );
-const DP_Sider: React.FC<SiderProps> = props => {
+const DP_Sider: React.FC<DP_SiderProps> = props => {
 
     return (
         <>
