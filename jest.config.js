@@ -44,7 +44,7 @@ module.exports = {
   // An object that configures minimum threshold enforcement for coverage results
   // coverageThreshold: undefined,
 
-  // A path to a custom dependency extractor
+  // A path to a custom-button dependency extractor
   // dependencyExtractor: undefined,
 
   // Make calling deprecated APIs throw helpful error messages
@@ -98,7 +98,7 @@ module.exports = {
   // Run tests from one or more projects
   // projects: undefined,
 
-  // Use this configuration option to add custom reporters to Jest
+  // Use this configuration option to add custom-button reporters to Jest
   // reporters: undefined,
 
   // Automatically reset mock state before every test
@@ -107,7 +107,7 @@ module.exports = {
   // Reset the module registry before running each individual test
   // resetModules: false,
 
-  // A path to a custom resolver
+  // A path to a custom-button resolver
   // resolver: undefined,
 
   // Automatically restore mock state and implementation before every test
@@ -121,7 +121,7 @@ module.exports = {
   //   "<rootDir>"
   // ],
 
-  // Allows you to use a custom runner instead of Jest's default test runner
+  // Allows you to use a custom-button runner instead of Jest's default test runner
   // runner: "jest-runner",
 
   // The paths to modules that run some code to configure or set up the testing environment before each test
@@ -159,10 +159,10 @@ module.exports = {
   // The regexp pattern or array of patterns that Jest uses to detect test files
   // testRegex: [],
 
-  // This option allows the use of a custom results processor
+  // This option allows the use of a custom-button results processor
   // testResultsProcessor: undefined,
 
-  // This option allows use of a custom test runner
+  // This option allows use of a custom-button test runner
   // testRunner: "jest-circus/runner",
 
   // This option sets the URL for the jsdom environment. It is reflected in properties such as location.href

@@ -5,10 +5,6 @@ import {MenuProps} from "antd";
 import {LaptopOutlined, NotificationOutlined, UserOutlined} from '@ant-design/icons';
 import DP_Menu from "./menu";
 
-export interface DP_SiderProps extends SiderProps {
-    name?: string
-}
-
 
 const items2: MenuProps['items'] = [UserOutlined, LaptopOutlined, NotificationOutlined].map(
     (icon, index) => {
@@ -29,7 +25,7 @@ const items2: MenuProps['items'] = [UserOutlined, LaptopOutlined, NotificationOu
         };
     },
 );
-const DP_Sider: React.FC<DP_SiderProps> = props => {
+const DP_Sider: React.FC<SiderProps> = (props) => {
 
     return (
         <>
