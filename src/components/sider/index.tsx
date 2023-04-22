@@ -6,7 +6,7 @@ import {LaptopOutlined, NotificationOutlined, UserOutlined} from '@ant-design/ic
 import DP_Menu from "./menu";
 
 export interface DP_SiderProps extends SiderProps {
-
+    name?: string
 }
 
 

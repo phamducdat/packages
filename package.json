@@ -1,6 +1,6 @@
 {
   "name": "@datpd/components",
-  "version": "0.0.71",
+  "version": "0.0.79",
   "description": "",
   "main": "dist/cjs/index.js",
   "module": "dist/esm/index.js",
@@ -10,8 +10,6 @@
   "scripts": {
     "test": "jest",
     "build": "rollup -c",
-    "prepack": "npm run build",
-    "publish": "npm publish --access public",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook"
   },
