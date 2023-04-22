@@ -1,10 +1,11 @@
 import React from "react";
 import {SiderProps} from "antd/lib";
 import Sider from "antd/es/layout/Sider";
-import {Menu, MenuProps} from "antd";
-import { LaptopOutlined, NotificationOutlined, UserOutlined } from '@ant-design/icons';
+import {MenuProps} from "antd";
+import {LaptopOutlined, NotificationOutlined, UserOutlined} from '@ant-design/icons';
+import DP_Menu from "./menu";
 
-export interface DP_SiderProps extends SiderProps{
+export interface DP_SiderProps extends SiderProps {
 
 }
 
@@ -33,11 +34,7 @@ const DP_Sider: React.FC<DP_SiderProps> = props => {
     return (
         <>
             <Sider {...props}>
-                <Menu
-                    mode="inline"
-                    defaultSelectedKeys={['1']}
-                    defaultOpenKeys={['sub1']}
-                    style={{ height: '100%', borderRight: 0 }}
+                <DP_Menu
                     items={items2}
                 />
             </Sider>
