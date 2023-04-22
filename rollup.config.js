@@ -8,6 +8,7 @@ import builtins from 'rollup-plugin-node-builtins';
 import json from '@rollup/plugin-json';
 import globals from 'rollup-plugin-node-globals';
 import postCSS from 'rollup-plugin-postcss';
+import del from 'rollup-plugin-delete';
 
 
 const packageJson = require('./package.json');
@@ -29,6 +30,7 @@ export default [
     ],
     plugins: [
       peerDepsExternal(),
+      del({ targets: ['dist/*'] }),
       resolve({
         browser: true, // Resolve browser-compatible modules
         preferBuiltins: true
