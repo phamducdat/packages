@@ -2,7 +2,7 @@ import { nodeResolve } from '@rollup/plugin-node-resolve';
 import commonjs from '@rollup/plugin-commonjs';
 import typescript from 'rollup-plugin-typescript2';
 import postCSS from 'rollup-plugin-postcss';
-
+import del from 'rollup-plugin-delete';
 const packageJson = require('./package.json');
 
 
@@ -22,6 +22,7 @@ export default {
     ],
     external: [...Object.keys(packageJson.peerDependencies || {})],
     plugins: [
+        del({ targets: ['dist/*'] }),
         nodeResolve(),
         commonjs(),
         typescript({
