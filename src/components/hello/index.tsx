@@ -2,8 +2,9 @@ import React from 'react';
 
 import cssClasses from './styles.module.css';
 import scssClasses from './styles.module.scss';
+import {SiderProps} from "antd/lib";
 
-export interface HelloProps {
+export interface HelloProps extends SiderProps{
     name: string;
 }
 
