@@ -1,4 +1,4 @@
-import DP_Sider from "../components/sider";
+import DP_Sider from "../index";
 import {ComponentMeta, ComponentStory} from "@storybook/react";
 import React from "react";
 
