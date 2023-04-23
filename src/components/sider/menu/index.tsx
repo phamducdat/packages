@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {Menu, MenuProps} from "antd";
 import {convertCustomItemTypesToItemTypes, CustomItemType} from "./hooks/useCustomItems";
 import {useMenuPath} from "./hooks/useMenuPath";
@@ -10,7 +10,9 @@ export interface CustomMenuProps extends Omit<MenuProps, 'items'> {
 
 const CustomMenu: React.FC<CustomMenuProps> = ({items = [], path, ...restProps}) => {
 
-    const {selectedKeys, openKeys} = useMenuPath(path || "");
+    const [currentPath, setCurrentPath] = useState(path || "")
+    const {selectedKeys, openKeys} = useMenuPath(currentPath || "");
+
 
     return (
         <div>
@@ -18,6 +20,12 @@ const CustomMenu: React.FC<CustomMenuProps> = ({items = [], path, ...restProps})
                 items={convertCustomItemTypesToItemTypes(items)}
                 onSelect={(value: any) => {
                     console.log("dat with value = ", value)
+
+                    const keyPath = value.keyPath
+                    const path = keyPath.filter((p: any) => p).reverse().join('/');
+                    console.log("dat with path = ", path)
+                    setCurrentPath(path)
+
                 }}
                 selectedKeys={selectedKeys}
                 openKeys={openKeys}
