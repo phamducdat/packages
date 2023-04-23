@@ -13,7 +13,6 @@ const CustomSider: React.FC<CustomSiderProps> = ({menuProps, ...siderProps}) => 
     return (
         <>
             <Sider
-
                 {...siderProps}
             >
                 <CustomMenu

@@ -17,46 +17,45 @@ const Template: ComponentStory<typeof CustomSider> =
 
 const demoItems: CustomItemType[] = [
     {
-        label: 'Navigation One',
-        path: 'mail',
+        label: 'Root',
+        path: 'root',
         icon: <MailOutlined/>,
     },
     {
-        label: 'Navigation Two',
-        path: 'app',
+        label: 'Dashboard',
+        path: '/dashboard',
         icon: <AppstoreOutlined/>,
-        disabled: true,
     },
     {
-        label: 'Navigation Three - Submenu',
-        path: 'SubMenu',
+        label: 'Home',
+        path: '/home',
         icon: <SettingOutlined/>,
         children: [
             {
                 type: 'group',
-                label: 'Item 1',
+                label: 'Human Resource',
                 children: [
                     {
-                        label: 'Option 1',
-                        path: 'setting:1',
+                        label: 'Time keeping',
+                        path: '/time-keeping',
                     },
                     {
-                        label: 'Option 2',
-                        path: 'setting:2',
+                        label: 'Salary',
+                        path: '/salary',
                     },
                 ],
             },
             {
                 type: 'group',
-                label: 'Item 2',
+                label: 'Driver',
                 children: [
                     {
-                        label: 'Option 3',
-                        path: 'setting:3',
+                        label: 'Company',
+                        path: '/company',
                     },
                     {
-                        label: 'Option 4',
-                        path: 'setting:4',
+                        label: 'Department',
+                        path: '/department',
                     },
                 ],
             },
