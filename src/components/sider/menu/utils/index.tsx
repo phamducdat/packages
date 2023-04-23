@@ -1,9 +1,9 @@
 import {AppstoreOutlined, MailOutlined, SettingOutlined} from "@ant-design/icons";
-import {CustomMenuItemTypeProps} from "../CustomMenuItemTypeProps";
+import {CustomMenuItemType} from "../CustomMenuItemType";
 import React from "react";
 import {ItemType} from "antd/es/menu/hooks/useItems";
 
-export const convertCustomMenuItemToMenuItem = (from: CustomMenuItemTypeProps[]): ItemType[] => {
+export const convertCustomMenuItemToMenuItem = (from: CustomMenuItemType[]): ItemType[] => {
     return [
         {
             label: 'Navigation One',
