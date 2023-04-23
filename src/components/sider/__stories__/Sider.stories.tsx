@@ -38,6 +38,12 @@ const demoItems: CustomItemType[] = [
                     {
                         label: 'Time keeping',
                         path: '/time-keeping',
+                        children: [
+                            {
+                                label:"Decision",
+                                path:"/decision",
+                            }
+                        ]
                     },
                     {
                         label: 'Salary',
@@ -69,7 +75,7 @@ Primary.args = {
     menuProps: {
         items: demoItems,
         mode: 'inline',
-        path:'/home/time-keeping'
+        path:'/home/time-keeping/decision'
     }
 
 }
