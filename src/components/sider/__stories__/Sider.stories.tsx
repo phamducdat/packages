@@ -20,13 +20,15 @@ const demoItems: CustomMenuItemType[] = [
         label: "datpd",
         title: "datpd",
         path: "/datpd",
-        icon:<MailOutlined/>
+        icon: <MailOutlined/>
     }
 ]
 
 
 export const Primary = Template.bind({});
 Primary.args = {
-    items: demoItems
+    menuProps: {
+        items: demoItems
+    }
 
 }

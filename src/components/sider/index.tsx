@@ -1,22 +1,23 @@
 import React from "react";
 import {SiderProps} from "antd";
 import Sider from "antd/es/layout/Sider";
-import CustomMenu from "./menu";
-import {CustomMenuItemType} from "./menu/CustomMenuItemType";
+import CustomMenu, {CustomMenuProps} from "./menu";
 
 
-export interface CustomSiderProps extends SiderProps {
-    items?: CustomMenuItemType[]
+export interface CustomSiderProps extends Omit<SiderProps, 'children'> {
+    menuProps: CustomMenuProps
 }
 
-const CustomSider: React.FC<CustomSiderProps> = props => {
+const CustomSider: React.FC<CustomSiderProps> = ({menuProps, ...siderProps}) => {
+
     return (
         <>
             <Sider
-                {...props}
+
+                {...siderProps}
             >
                 <CustomMenu
-                    items={props.items}
+                    {...menuProps}
                 />
             </Sider>
         </>
