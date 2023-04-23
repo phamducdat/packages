@@ -18,7 +18,7 @@ const Template: ComponentStory<typeof CustomSider> =
 const demoItems: CustomItemType[] = [
     {
         label: 'Root',
-        path: 'root',
+        path: '/root',
         icon: <MailOutlined/>,
     },
     {
@@ -68,7 +68,8 @@ export const Primary = Template.bind({});
 Primary.args = {
     menuProps: {
         items: demoItems,
-        mode: 'inline'
+        mode: 'inline',
+        path:'/home/time-keeping'
     }
 
 }

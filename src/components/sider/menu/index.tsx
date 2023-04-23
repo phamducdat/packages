@@ -10,10 +10,15 @@ export interface CustomMenuProps extends Omit<MenuProps, 'items'> {
 const CustomMenu: React.FC<CustomMenuProps> = ({items = [], path, ...restProps}) => {
 
 
+
     return (
         <div>
             <Menu
-                items={convertCustomItemTypesToItemTypes(items)}
+                items={convertCustomItemTypesToItemTypes(items, null)}
+                onSelect={(value: any) => {
+                    console.log("dat with value = ", value)
+                }
+                }
                 {...restProps}
             />
         </div>

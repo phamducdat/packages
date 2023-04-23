@@ -8,7 +8,7 @@ export interface CustomSubMenuType extends Omit<Omit<SubMenuType, "key">, "child
 
 }
 
-export interface CustomMenuItemGroupType extends Omit<Omit<MenuItemGroupType, "key">, "children">{
+export interface CustomMenuItemGroupType extends Omit<Omit<MenuItemGroupType, "key">, "children"> {
     path?: string
     children?: CustomItemType[]
 
@@ -21,23 +21,44 @@ export interface CustomMenuItemType extends Omit<MenuItemType, "key"> {
 
 export type CustomItemType = CustomMenuItemType | CustomSubMenuType | CustomMenuItemGroupType | null
 
-export const convertCustomItemTypesToItemTypes = (from: CustomItemType[]): ItemType[] => {
+export const convertCustomItemTypesToItemTypes = (from: CustomItemType[], parentPath: string | null): ItemType[] => {
     return (from || []).map((opt, index) => {
         if (opt && typeof opt === "object") {
             const {label, children, path, type, ...restProps} = opt as any;
+            const mergedKey = path ?? `tmp-${index}`;
 
-            if (children) {
+            let combineKey;
+
+            if (path && parentPath)
+                combineKey = parentPath + path
+            else if (path)
+                combineKey = path
+            else if (parentPath)
+                combineKey = parentPath
+
+            if (children || type === 'group') {
+                if (type === 'group') {
+                    return {
+                        label: label,
+                        key: mergedKey,
+                        type: type,
+                        ...restProps,
+                        children: convertCustomItemTypesToItemTypes(children, parentPath)
+                    }
+                }
+
+
                 return {
                     label: label,
-                    key: path,
-                    children: convertCustomItemTypesToItemTypes(children),
+                    key: combineKey,
+                    children: convertCustomItemTypesToItemTypes(children, combineKey),
                     ...restProps
                 }
             }
 
             return {
                 label: label,
-                key: path,
+                key: combineKey,
                 ...restProps
             };
         }
