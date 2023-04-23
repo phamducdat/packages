@@ -1,6 +1,6 @@
 import {ReactNode} from "react";
 
-export interface CustomMenuItemProps{
+export interface CustomMenuItemTypeProps {
     danger?: boolean,
 
     disabled?: boolean,

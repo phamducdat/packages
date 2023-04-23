@@ -1,8 +1,9 @@
 import {AppstoreOutlined, MailOutlined, SettingOutlined} from "@ant-design/icons";
-import {CustomMenuItemProps} from "../CustomMenuItemProps";
+import {CustomMenuItemTypeProps} from "../CustomMenuItemTypeProps";
 import React from "react";
+import {ItemType} from "antd/es/menu/hooks/useItems";
 
-export const convertCustomMenuItemToMenuItem = (from: CustomMenuItemProps[]) => {
+export const convertCustomMenuItemToMenuItem = (from: CustomMenuItemTypeProps[]): ItemType[] => {
     return [
         {
             label: 'Navigation One',
@@ -59,4 +60,4 @@ export const convertCustomMenuItemToMenuItem = (from: CustomMenuItemProps[]) => 
             key: 'alipay',
         },
     ];
-}
+};
