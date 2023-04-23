@@ -2,6 +2,7 @@ import CustomSider from "../index";
 import {ComponentMeta, ComponentStory} from "@storybook/react";
 import React from "react";
 import {CustomMenuItemType} from "../menu/CustomMenuItemType";
+import {MailOutlined} from "@ant-design/icons";
 
 export default {
     title: 'Sider',
@@ -18,7 +19,8 @@ const demoItems: CustomMenuItemType[] = [
     {
         label: "datpd",
         title: "datpd",
-        path: "/datpd"
+        path: "/datpd",
+        icon:<MailOutlined/>
     }
 ]
 
