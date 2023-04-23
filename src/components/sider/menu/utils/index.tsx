@@ -1,63 +1,22 @@
-import {AppstoreOutlined, MailOutlined, SettingOutlined} from "@ant-design/icons";
-import {CustomMenuItemType} from "../CustomMenuItemType";
+import {CustomMenuItemType, CustomSubMenuType} from "../CustomMenuItemType";
 import React from "react";
 import {ItemType} from "antd/es/menu/hooks/useItems";
+import {MailOutlined} from "@ant-design/icons";
 
-export const convertCustomMenuItemToMenuItem = (from: CustomMenuItemType[]): ItemType[] => {
-    return [
-        {
-            label: 'Navigation One',
-            key: 'mail',
-            icon: <MailOutlined/>,
-        },
-        {
-            label: 'Navigation Two',
-            key: 'app',
-            icon: <AppstoreOutlined/>,
-            disabled: true,
-        },
-        {
-            label: 'Navigation Three - Submenu',
-            key: 'SubMenu',
-            icon: <SettingOutlined/>,
-            children: [
-                {
-                    type: 'group',
-                    label: 'Item 1',
-                    children: [
-                        {
-                            label: 'Option 1',
-                            key: 'setting:1',
-                        },
-                        {
-                            label: 'Option 2',
-                            key: 'setting:2',
-                        },
-                    ],
-                },
-                {
-                    type: 'group',
-                    label: 'Item 2',
-                    children: [
-                        {
-                            label: 'Option 3',
-                            key: 'setting:3',
-                        },
-                        {
-                            label: 'Option 4',
-                            key: 'setting:4',
-                        },
-                    ],
-                },
-            ],
-        },
-        {
-            label: (
-                <a href="https://ant.design" target="_blank" rel="noopener noreferrer">
-                    Navigation Four - Link
-                </a>
-            ),
-            key: 'alipay',
-        },
-    ];
+
+export type CustomItemType = CustomMenuItemType | CustomSubMenuType | null
+
+export const convertCustomItemTypesToItemTypes = (from: CustomItemType[]): ItemType[] => {
+    return (from || []).map((opt, index) => {
+        if (opt && typeof opt === "object") {
+            const {label, children, key, type, ...restProps} = opt as any;
+            return {
+                label: 'Navigation One',
+                key: 'mail',
+                icon: <MailOutlined/>,
+            };
+        }
+
+        return null;
+    }).filter((opt) => opt != null)
 };

@@ -1,10 +1,10 @@
 import React from 'react';
 import {Menu, MenuProps} from "antd";
-import {CustomMenuItemType} from "./CustomMenuItemType";
-import {convertCustomMenuItemToMenuItem} from "./utils";
+import {CustomMenuItemType, CustomSubMenuType} from "./CustomMenuItemType";
+import {convertCustomItemTypesToItemTypes} from "./utils";
 
 export interface CustomMenuProps extends Omit<MenuProps, 'items'> {
-    items?: CustomMenuItemType[]
+    items?: CustomMenuItemType[] | CustomSubMenuType[]
 
 }
 
@@ -19,7 +19,7 @@ const CustomMenu: React.FC<CustomMenuProps> = (props) => {
     return (
         <div>
             <Menu
-                items={convertCustomMenuItemToMenuItem(test)}
+                items={convertCustomItemTypesToItemTypes(test)}
             />
         </div>
     );

@@ -1,14 +1,13 @@
-import {ReactNode} from "react";
+import React from "react";
+import {MenuItemType, SubMenuType} from "antd/es/menu/hooks/useItems";
 
-export interface CustomMenuItemType {
-    danger?: boolean,
 
-    disabled?: boolean,
-    icon?: ReactNode,
-
+export interface CustomSubMenuType extends Omit<Omit<SubMenuType, "key">, "children"> {
     path?: string,
-    label?: string,
+    children?: CustomSubMenuType[]
 
-    title?: string
+}
 
+export interface CustomMenuItemType extends Omit<MenuItemType, "key"> {
+    path?: string
 }
