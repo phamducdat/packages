@@ -21,21 +21,11 @@ export interface CustomMenuItemType extends Omit<MenuItemType, "key"> {
 
 export type CustomItemType = CustomMenuItemType | CustomSubMenuType | CustomMenuItemGroupType | null
 
-export const convertCustomItemTypesToItemTypes = (from: CustomItemType[], parentPath: string | null): ItemType[] => {
+export const convertCustomItemTypesToItemTypes = (from: CustomItemType[]): ItemType[] => {
     return (from || []).map((opt, index) => {
         if (opt && typeof opt === "object") {
             const {label, children, path, type, ...restProps} = opt as any;
             const mergedKey = path ?? `tmp-${index}`;
-
-            let combineKey;
-
-            if (path && parentPath)
-                combineKey = parentPath + path
-            else if (path)
-                combineKey = path
-            else if (parentPath)
-                combineKey = parentPath
-
             if (children || type === 'group') {
                 if (type === 'group') {
                     return {
@@ -43,22 +33,19 @@ export const convertCustomItemTypesToItemTypes = (from: CustomItemType[], parent
                         key: mergedKey,
                         type: type,
                         ...restProps,
-                        children: convertCustomItemTypesToItemTypes(children, parentPath)
+                        children: convertCustomItemTypesToItemTypes(children)
                     }
                 }
-
-
                 return {
                     label: label,
-                    key: combineKey,
-                    children: convertCustomItemTypesToItemTypes(children, combineKey),
+                    key: path,
+                    children: convertCustomItemTypesToItemTypes(children),
                     ...restProps
                 }
             }
-
             return {
                 label: label,
-                key: combineKey,
+                key: path,
                 ...restProps
             };
         }
