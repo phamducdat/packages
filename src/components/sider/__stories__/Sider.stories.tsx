@@ -1,8 +1,8 @@
 import CustomSider from "../index";
 import {ComponentMeta, ComponentStory} from "@storybook/react";
 import React from "react";
-import {CustomMenuItemType} from "../menu/CustomMenuItemType";
-import {MailOutlined} from "@ant-design/icons";
+import {AppstoreOutlined, MailOutlined, SettingOutlined} from "@ant-design/icons";
+import {CustomItemType} from "../menu/hooks/useCustomItems";
 
 export default {
     title: 'Sider',
@@ -15,13 +15,61 @@ const Template: ComponentStory<typeof CustomSider> =
     (args) => <CustomSider {...args}/>
 
 
-const demoItems: CustomMenuItemType[] = [
+const demoItems: CustomItemType[] = [
     {
-        label: "datpd",
-        title: "datpd",
-        path: "/datpd",
-        icon: <MailOutlined/>
-    }
+        label: 'Navigation One',
+        path: 'mail',
+        icon: <MailOutlined/>,
+    },
+    {
+        label: 'Navigation Two',
+        path: 'app',
+        icon: <AppstoreOutlined/>,
+        disabled: true,
+    },
+    {
+        label: 'Navigation Three - Submenu',
+        path: 'SubMenu',
+        icon: <SettingOutlined/>,
+        children: [
+            {
+                type: 'group',
+                label: 'Item 1',
+                children: [
+                    {
+                        label: 'Option 1',
+                        path: 'setting:1',
+                    },
+                    {
+                        label: 'Option 2',
+                        path: 'setting:2',
+                    },
+                ],
+            },
+            {
+                type: 'group',
+                label: 'Item 2',
+                children: [
+                    {
+                        label: 'Option 3',
+                        path: 'setting:3',
+                    },
+                    {
+                        label: 'Option 4',
+                        path: 'setting:4',
+                    },
+                ],
+            },
+        ],
+    },
+    {
+        label: (
+            <a href="https://ant.design" target="_blank" rel="noopener noreferrer">
+                Navigation Four - Link
+            </a>
+        ),
+        path: 'alipay',
+    },
 ]
 
 
