@@ -61,22 +61,15 @@ const demoItems: CustomItemType[] = [
                 ],
             },
         ],
-    },
-    {
-        label: (
-            <a href="https://ant.design" target="_blank" rel="noopener noreferrer">
-                Navigation Four - Link
-            </a>
-        ),
-        path: 'alipay',
-    },
+    }
 ]
 
 
 export const Primary = Template.bind({});
 Primary.args = {
     menuProps: {
-        items: demoItems
+        items: demoItems,
+        mode: 'inline'
     }
 
 }
