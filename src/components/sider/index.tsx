@@ -4,8 +4,7 @@ import Sider from "antd/es/layout/Sider";
 
 
 export interface CustomSiderProps extends SiderProps {
-    firstName?: string;
-    lastName?: string;
+
 
 }
 
