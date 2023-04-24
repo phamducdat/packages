@@ -18,6 +18,9 @@ const CustomMenu: React.FC<CustomMenuProps> = ({items = [], path, ...restProps})
         <div>
             <Menu
                 items={convertCustomItemTypesToItemTypes(items)}
+                onOpenChange={(value: any) => {
+                    console.log("dat with onOpenChange = ", value)
+                }}
                 onSelect={(value: any) => {
                     console.log("dat with value = ", value)
 
