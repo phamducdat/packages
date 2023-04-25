@@ -4,6 +4,7 @@ import typescript from 'rollup-plugin-typescript2';
 import postCSS from 'rollup-plugin-postcss';
 import del from 'rollup-plugin-delete';
 const packageJson = require('./package.json');
+import filesize from 'rollup-plugin-filesize';
 
 
 export default {
@@ -31,5 +32,6 @@ export default {
         postCSS({
             plugins: [require('autoprefixer')],
         }),
+        filesize(),
     ],
 };

@@ -43,7 +43,6 @@ const CustomMenu: React.FC<CustomMenuProps> = ({items = [], path, ...restProps})
                 }}
                 openKeys={openKeys}
                 selectedKeys={selectedKeys}
-                // openKeys={openKeys}
                 {...restProps}
             />
         </div>
