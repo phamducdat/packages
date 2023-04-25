@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import {Menu, MenuProps} from "antd";
 import {convertCustomItemTypesToItemTypes, CustomItemType} from "./hooks/useCustomItems";
+import {useLocation, useNavigate} from "react-router-dom";
 
 export interface CustomMenuProps extends Omit<MenuProps, 'items'> {
     items?: CustomItemType[] | []
@@ -8,15 +9,17 @@ export interface CustomMenuProps extends Omit<MenuProps, 'items'> {
 }
 
 const CustomMenu: React.FC<CustomMenuProps> = ({items = [], path, ...restProps}) => {
-
-    const [currentPath, setCurrentPath] = useState(path || "")
+    const location = useLocation()
+    const pathname = location.pathname
     const [openKeys, setOpenKeys] = useState<string[]>([])
     const [selectedKeys, setSelectedKeys] = useState<string[]>([])
 
-    useEffect(() => {
-        if (currentPath) {
+    let navigate = useNavigate()
 
-            const pathSegments = currentPath.split('/').filter((i) => i);
+    useEffect(() => {
+        if (pathname) {
+
+            const pathSegments = pathname.split('/').filter((i) => i);
 
             const lastSegment = pathSegments.pop();
             const restSegment = pathSegments
@@ -25,7 +28,7 @@ const CustomMenu: React.FC<CustomMenuProps> = ({items = [], path, ...restProps})
                 return "/" + element
             }))
         }
-    }, [currentPath])
+    }, [pathname])
 
 
     return (
@@ -39,7 +42,8 @@ const CustomMenu: React.FC<CustomMenuProps> = ({items = [], path, ...restProps})
 
                     const keyPath = value.keyPath
                     const path = keyPath.filter((p: any) => p).reverse().join('');
-                    setCurrentPath(path)
+                    navigate(path)
+                    // setCurrentPath(path)
                 }}
                 openKeys={openKeys}
                 selectedKeys={selectedKeys}
