@@ -5,7 +5,7 @@ import postCSS from 'rollup-plugin-postcss';
 import del from 'rollup-plugin-delete';
 const packageJson = require('./package.json');
 import filesize from 'rollup-plugin-filesize';
-
+import json from '@rollup/plugin-json';
 
 export default {
     input: 'src/index.ts',
@@ -33,5 +33,6 @@ export default {
             plugins: [require('autoprefixer')],
         }),
         filesize(),
+        json(),
     ],
 };
