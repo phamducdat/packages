@@ -1,11 +1,11 @@
 import {useEffect, useState} from "react";
 
 export const useMenuPath = (path: string): {
-    selectedKeys: string[],
-    openKeys: string[]
+    selectedKeyPaths: string[],
+    openKeyPaths: string[]
 } => {
-    const [selectedKeys, setSelectedKeys] = useState<string[]>([])
-    const [openKeys, setOpenKeys] = useState<string[]>([])
+    const [selectedKeyPaths, setSelectedKeyPaths] = useState<string[]>([])
+    const [openKeyPaths, setOpenKeyPaths] = useState<string[]>([])
 
     useEffect(() => {
         if (path) {
@@ -13,13 +13,13 @@ export const useMenuPath = (path: string): {
 
             const lastSegment = pathSegments.pop();
             const restSegment = pathSegments
-            setSelectedKeys([`/${lastSegment}`])
-            setOpenKeys(restSegment.map(element => {
+            setSelectedKeyPaths([`/${lastSegment}`])
+            setOpenKeyPaths(restSegment.map(element => {
                 return "/" + element
             }))
         }
 
     }, [path])
 
-    return {selectedKeys, openKeys};
+    return {selectedKeyPaths, openKeyPaths};
 }

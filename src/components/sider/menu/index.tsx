@@ -1,7 +1,6 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {Menu, MenuProps} from "antd";
 import {convertCustomItemTypesToItemTypes, CustomItemType} from "./hooks/useCustomItems";
-import {useMenuPath} from "./hooks/useMenuPath";
 
 export interface CustomMenuProps extends Omit<MenuProps, 'items'> {
     items?: CustomItemType[] | []
@@ -11,7 +10,22 @@ export interface CustomMenuProps extends Omit<MenuProps, 'items'> {
 const CustomMenu: React.FC<CustomMenuProps> = ({items = [], path, ...restProps}) => {
 
     const [currentPath, setCurrentPath] = useState(path || "")
-    const {selectedKeys, openKeys} = useMenuPath(currentPath || "");
+    const [openKeys, setOpenKeys] = useState<string[]>([])
+    const [selectedKeys, setSelectedKeys] = useState<string[]>([])
+
+    useEffect(() => {
+        if (currentPath) {
+
+            const pathSegments = currentPath.split('/').filter((i) => i);
+
+            const lastSegment = pathSegments.pop();
+            const restSegment = pathSegments
+            setSelectedKeys([`/${lastSegment}`])
+            setOpenKeys(restSegment.map(element => {
+                return "/" + element
+            }))
+        }
+    }, [currentPath])
 
 
     return (
@@ -19,19 +33,17 @@ const CustomMenu: React.FC<CustomMenuProps> = ({items = [], path, ...restProps})
             <Menu
                 items={convertCustomItemTypesToItemTypes(items)}
                 onOpenChange={(value: any) => {
-                    console.log("dat with onOpenChange = ", value)
+                    setOpenKeys(value)
                 }}
                 onSelect={(value: any) => {
-                    console.log("dat with value = ", value)
 
                     const keyPath = value.keyPath
-                    const path = keyPath.filter((p: any) => p).reverse().join('/');
-                    console.log("dat with path = ", path)
+                    const path = keyPath.filter((p: any) => p).reverse().join('');
                     setCurrentPath(path)
-
                 }}
-                selectedKeys={selectedKeys}
                 openKeys={openKeys}
+                selectedKeys={selectedKeys}
+                // openKeys={openKeys}
                 {...restProps}
             />
         </div>
