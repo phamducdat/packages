@@ -1,4 +1,4 @@
-import MenuPath from "../index";
+import Menu from "../index";
 import {ComponentMeta, ComponentStory} from "@storybook/react";
 import React from "react";
 import {ItemPathType} from "../hooks/useCustomItems";
@@ -7,13 +7,13 @@ import {AppstoreOutlined, MailOutlined, SettingOutlined} from "@ant-design/icons
 
 export default {
     title: "Menu",
-    component: MenuPath,
+    component: Menu.Path,
     argTypes: {}
-} as ComponentMeta<typeof MenuPath>
+} as ComponentMeta<typeof Menu.Path>
 
 
-const Template: ComponentStory<typeof MenuPath> =
-    (args) => <MenuPath {...args}/>
+const Template: ComponentStory<typeof Menu.Path> =
+    (args) => <Menu.Path {...args}/>
 
 const demoItems: ItemPathType[] = [
     {
