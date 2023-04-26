@@ -1,7 +1,7 @@
 import axios from 'axios';
 
-const customAxios = axios.create({
+const DP_Axios = axios.create({
     baseURL: "http://datpd"
 });
 
-export default customAxios;
+export default DP_Axios;
