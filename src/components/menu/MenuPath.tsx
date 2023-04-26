@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import {Menu, MenuProps} from "antd";
-import {convertCustomItemTypesToItemTypes, ItemPathType} from "./hooks/useCustomItems";
+import {convertCustomItemTypesToItemTypes, ItemPathType} from "./hooks/usePathItems";
 
 export interface MenuPathProps extends Omit<MenuProps, 'items'> {
     items?: ItemPathType[] | []

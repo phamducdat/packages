@@ -1,8 +1,8 @@
 import Menu from "../index";
 import {ComponentMeta, ComponentStory} from "@storybook/react";
 import React from "react";
-import {ItemPathType} from "../hooks/useCustomItems";
 import {AppstoreOutlined, MailOutlined, SettingOutlined} from "@ant-design/icons";
+import {ItemPathType} from "../hooks/usePathItems";
 
 
 export default {
