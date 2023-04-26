@@ -1,19 +1,19 @@
-import CustomSider from "../index";
+import CustomMenu from "../index";
 import {ComponentMeta, ComponentStory} from "@storybook/react";
 import React from "react";
+import {CustomItemType} from "../hooks/useCustomItems";
 import {AppstoreOutlined, MailOutlined, SettingOutlined} from "@ant-design/icons";
-import {CustomItemType} from "../menu/hooks/useCustomItems";
+
 
 export default {
-    title: 'Sider',
-    component: CustomSider,
-    argTypes: {},
-} as ComponentMeta<typeof CustomSider>
+    title: "Menu",
+    component: CustomMenu,
+    argTypes: {}
+} as ComponentMeta<typeof CustomMenu>
 
 
-const Template: ComponentStory<typeof CustomSider> =
-    (args) => <CustomSider {...args}/>
-
+const Template: ComponentStory<typeof CustomMenu> =
+    (args) => <CustomMenu {...args}/>
 
 const demoItems: CustomItemType[] = [
     {
@@ -40,8 +40,8 @@ const demoItems: CustomItemType[] = [
                         path: '/time-keeping',
                         children: [
                             {
-                                label:"Decision",
-                                path:"/decision",
+                                label: "Decision",
+                                path: "/decision",
                             }
                         ]
                     },
@@ -69,13 +69,13 @@ const demoItems: CustomItemType[] = [
     }
 ]
 
-
 export const Primary = Template.bind({});
 Primary.args = {
-    menuProps: {
-        items: demoItems,
-        mode: 'inline',
-        path:'/home/time-keeping/decision'
+    items: demoItems,
+    mode: 'inline',
+    path: '/home/time-keeping/decision',
+    onPathChange: (path: string) => {
+        console.log("dat with value = ", path)
     }
 
 }
