@@ -4,5 +4,7 @@ export * from './button';
 export {default as Sider} from './sider';
 export * from './sider';
 
-export {default as CustomAxios} from './axios'
+
+export {default as MenuPath} from './menu';
+export * from './menu';
 
