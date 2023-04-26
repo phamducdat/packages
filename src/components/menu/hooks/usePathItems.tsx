@@ -2,26 +2,26 @@ import React from "react";
 import {ItemType, MenuItemGroupType, MenuItemType, SubMenuType} from "antd/es/menu/hooks/useItems";
 
 
-export interface CustomSubMenuType extends Omit<Omit<SubMenuType, "key">, "children"> {
+export interface SubMenuPathType extends Omit<Omit<SubMenuType, "key">, "children"> {
     path?: string,
-    children?: CustomItemType[]
+    children?: ItemPathType[]
 
 }
 
-export interface CustomMenuItemGroupType extends Omit<Omit<MenuItemGroupType, "key">, "children"> {
+export interface MenuItemGroupPathType extends Omit<Omit<MenuItemGroupType, "key">, "children"> {
     path?: string
-    children?: CustomItemType[]
+    children?: ItemPathType[]
 
 }
 
-export interface CustomMenuItemType extends Omit<MenuItemType, "key"> {
+export interface MenuItemPathType extends Omit<MenuItemType, "key"> {
     path?: string
 }
 
 
-export type CustomItemType = CustomMenuItemType | CustomSubMenuType | CustomMenuItemGroupType | null
+export type ItemPathType = MenuItemPathType | SubMenuPathType | MenuItemGroupPathType | null
 
-export const convertCustomItemTypesToItemTypes = (from: CustomItemType[]): ItemType[] => {
+export const convertCustomItemTypesToItemTypes = (from: ItemPathType[]): ItemType[] => {
     return (from || []).map((opt, index) => {
         if (opt && typeof opt === "object") {
             const {label, children, path, type, ...restProps} = opt as any;

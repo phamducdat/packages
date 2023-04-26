@@ -1,14 +1,14 @@
 import React, {useEffect, useState} from 'react';
 import {Menu, MenuProps} from "antd";
-import {convertCustomItemTypesToItemTypes, CustomItemType} from "./hooks/useCustomItems";
+import {convertCustomItemTypesToItemTypes, ItemPathType} from "./hooks/usePathItems";
 
-export interface CustomMenuProps extends Omit<MenuProps, 'items'> {
-    items?: CustomItemType[] | []
+export interface MenuPathProps extends Omit<MenuProps, 'items'> {
+    items?: ItemPathType[] | []
     path?: string,
-    onPathChange?: (path: string) => string
+    onPathChange?: (path: string) => void
 }
 
-const CustomMenu: React.FC<CustomMenuProps> = ({items = [], path, onPathChange, ...restProps}) => {
+const MenuPath: React.FC<MenuPathProps> = ({items = [], path, onPathChange, ...restProps}) => {
 
     const [currentPath, setCurrentPath] = useState<string>(path || "")
     const [openKeys, setOpenKeys] = useState<string[]>([])
@@ -17,9 +17,7 @@ const CustomMenu: React.FC<CustomMenuProps> = ({items = [], path, onPathChange, 
 
     useEffect(() => {
         if (currentPath) {
-
             const pathSegments = currentPath.split('/').filter((i) => i);
-
             const lastSegment = pathSegments.pop();
             const restSegment = pathSegments
             setSelectedKeys([`/${lastSegment}`])
@@ -51,6 +49,7 @@ const CustomMenu: React.FC<CustomMenuProps> = ({items = [], path, onPathChange, 
             />
         </div>
     );
+
 };
 
-export default CustomMenu;
+export default MenuPath;
