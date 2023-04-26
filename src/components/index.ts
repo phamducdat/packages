@@ -7,3 +7,6 @@ export * from './sider';
 export {default as Menu} from './menu';
 export type {MenuPathProps} from './menu/MenuPath';
 
+import DP_Axios from './axios'
+export {DP_Axios}
+
