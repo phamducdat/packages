@@ -6,5 +6,5 @@ export * from './sider';
 
 
 export {default as Menu} from './menu';
-export * from './menu';
+export type {MenuPathProps} from './menu/MenuPath';
 
