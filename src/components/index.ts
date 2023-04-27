@@ -7,5 +7,8 @@ export * from './sider';
 export {default as Menu} from './menu';
 export type {MenuPathProps} from './menu/MenuPath';
 
+import DP_Axios from './axios'
+export {DP_Axios}
+
 export {default as CustomReactKeycloakProvider} from './keycloak';
 export * from './keycloak'

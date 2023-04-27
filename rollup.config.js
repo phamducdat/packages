@@ -6,6 +6,12 @@ const packageJson = require('./package.json');
 import filesize from 'rollup-plugin-filesize';
 import json from '@rollup/plugin-json';
 import resolve, {nodeResolve} from "@rollup/plugin-node-resolve";
+import builtins from 'rollup-plugin-node-builtins';
+import peerDepsExternal from "rollup-plugin-peer-deps-external";
+import { terser } from "rollup-plugin-terser";
+
+
+
 
 export default {
     input: 'src/index.ts',
@@ -23,21 +29,27 @@ export default {
     ],
     external: [...Object.keys(packageJson.peerDependencies || {})],
     plugins: [
-        del({ targets: ['dist/*'] }),
-        nodeResolve(),
-        commonjs(),
+        peerDepsExternal(),
         resolve({
             browser: true, // Resolve browser-compatible modules
             preferBuiltins: true,
         }),
 
+        commonjs(),
+        json(),
+        builtins(),
         typescript({
             typescript: require('typescript'),
         }),
+        terser(),
+
+        nodeResolve(),
+
         postCSS({
             plugins: [require('autoprefixer')],
         }),
         filesize(),
-        json(),
+        del({ targets: ['dist/*'] }),
+
     ],
 };
