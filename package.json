@@ -1,7 +1,7 @@
 {
-  "name": "@datpd/components",
+  "name": "@datpd/packages",
   "version": "0.1.77",
-  "description": "",
+  "description": "components of datpd",
   "main": "dist/cjs/index.js",
   "module": "dist/esm/index.js",
   "files": [
@@ -13,6 +13,19 @@
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/phamducdat/packages"
+  },
+  "bugs": {
+    "url": "https://github.com/phamducdat/packages/issues"
+  },
+  "homepage": "https://github.com/phamducdat/packages#readme",
+  "keywords": [
+    "react",
+    "custom-antd",
+    "datpd"
+  ],
   "author": "datpd",
   "license": "ISC",
   "peerDependencies": {
@@ -73,11 +86,5 @@
     "react-icons": "^4.8.0",
     "react-router-dom": "^6.10.0",
     "react-uuid": "^2.0.0"
-  },
-  "config": {
-    "commitizen": {
-      "path": "./node_modules/cz-conventional-changelog"
-    }
   }
-
 }
