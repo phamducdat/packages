@@ -27,6 +27,9 @@
     "custom-antd",
     "datpd"
   ],
+  "publishConfig": {
+    "access": "public"
+  },
   "author": "datpd",
   "license": "ISC",
   "peerDependencies": {
