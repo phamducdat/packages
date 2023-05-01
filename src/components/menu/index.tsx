@@ -7,6 +7,7 @@ const Menu: React.FC<MenuProps> & { Path: React.FC<MenuPathProps> } = (props) =>
     return <AntMenu {...props} />
 }
 
+
 Menu.Path = MenuPath;
 
 export default Menu;
