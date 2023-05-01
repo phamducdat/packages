@@ -1,6 +1,6 @@
 {
   "name": "@datpd/packages",
-  "version": "0.1.77",
+  "version": "1.0.0",
   "description": "components of datpd",
   "main": "dist/cjs/index.js",
   "module": "dist/esm/index.js",
