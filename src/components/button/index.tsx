@@ -1,18 +1,15 @@
-import {Button, ButtonProps} from "antd";
-import React from "react";
+import { Button, ButtonProps } from 'antd';
+import React from 'react';
 
+export type CustomButtonProps = ButtonProps;
 
-export interface CustomButtonProps extends ButtonProps {
-
-}
-
-const CustomButton: React.FC<CustomButtonProps> = props => {
-    return (
-        <>
-            <div>
-                <Button {...props}/>
-            </div>
-        </>
-    );
+const CustomButton: React.FC<CustomButtonProps> = (props) => {
+  return (
+    <>
+      <div>
+        <Button {...props} />
+      </div>
+    </>
+  );
 };
 export default CustomButton;
