@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext, useState } from 'react';
 import {
   Table as AntTable,
   TablePaginationConfig,
@@ -27,14 +27,6 @@ const Table: React.FC<TableProps> = (props) => {
     defaultCurrent: parseInt(searchParams.get(pageText) ?? '1', 10),
     defaultPageSize: parseInt(searchParams.get(pageSizeText) ?? '1', 10),
   };
-
-  useEffect(() => {
-    console.log('dat with search params = ', searchParams.get(pageText));
-  }, [searchParams]);
-
-  useEffect(() => {
-    console.log('dat with location, params = ', location, searchParams);
-  }, []);
 
   console.log('dat with pagination = ', pagination);
   return (

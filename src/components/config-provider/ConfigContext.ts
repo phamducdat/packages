@@ -4,7 +4,8 @@ export interface TableConfig {
   params?: {
     pageText?: string;
     pageSizeText?: string;
-    sortText?: string;
+    sortFieldText?: string;
+    sortOrderText?: string;
   };
 }
 
@@ -15,9 +16,10 @@ export interface Config {
 const defaultConfig: Config = {
   table: {
     params: {
-      sortText: 'sort',
       pageSizeText: 'pageSize',
       pageText: 'page',
+      sortFieldText: 'sortField',
+      sortOrderText: 'sortOrder',
     },
   },
 };
