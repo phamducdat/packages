@@ -9,7 +9,7 @@ const Table: React.FC<TableProps> = (props) => {
   const params = config.table?.params ?? {};
   return (
     <div>
-      <AntTable />
+      <AntTable {...props} />
     </div>
   );
 };
