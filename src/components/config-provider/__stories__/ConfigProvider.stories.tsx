@@ -18,7 +18,12 @@ const Template: ComponentStory<typeof ConfigProvider> = (args) => (
 export const Primary = Template.bind({});
 Primary.args = {
   config: {
-    them: 'default',
-    language: 'vi',
+    table: {
+      params: {
+        sortText: 'sort',
+        pageSizeText: 'pageSize',
+        pageText: 'page',
+      },
+    },
   },
 };
