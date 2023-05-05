@@ -1,8 +1,8 @@
 import { createContext } from 'react';
 
 export interface Config {
-  them: string;
-  language: string;
+  them?: string;
+  language?: string;
 }
 
 const defaultConfig: Config = {

@@ -1,7 +1,7 @@
 import React, { ReactNode } from 'react';
 import { Config, ConfigContext } from './ConfigContext';
 
-interface ConfigProviderProps {
+export interface ConfigProviderProps {
   config: Config;
   children: ReactNode;
 }
