@@ -42,7 +42,7 @@ export default {
   decorators: [withRouter],
   parameters: {
     reactRouter: {
-      routePath: '/table',
+      routePath: '/config-provider',
       searchParams: { page: '4', pageSize: '10' },
     },
   },
@@ -67,9 +67,10 @@ Primary.args = {
   config: {
     table: {
       params: {
-        sortText: 'sort',
         pageSizeText: 'pageSize',
         pageText: 'page',
+        sortOrderText: 'sortOrder',
+        sortFieldText: 'sortField',
       },
     },
   },
