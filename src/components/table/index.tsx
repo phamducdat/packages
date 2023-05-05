@@ -1,11 +1,12 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import {
   Table as AntTable,
   TablePaginationConfig,
   TableProps as AntTableProps,
 } from 'antd';
 import { ConfigContext } from '../config-provider/ConfigContext';
-import { useLocation, useSearchParams } from 'react-router-dom';
+import { useSearchParams } from 'react-router-dom';
+import { ColumnProps } from 'antd/es/table';
 
 export type TableProps = AntTableProps<any>;
 
@@ -23,8 +24,13 @@ const Table: React.FC<TableProps> = (props) => {
     ...params,
   };
   const [searchParams] = useSearchParams();
-  const [paginationData, setPaginationData] = useState();
-  const location = useLocation();
+  const { columns } = props;
+  const [customColumns, setCustomColumns] = useState<ColumnProps<any>>();
+
+  // useEffect(() => {
+  //   const sortField = searchParams.get(sortFieldText)?.toString() ?? '';
+  //   columns.fil;
+  // }, [searchParams]);
 
   const pagination: TablePaginationConfig = {
     ...props.pagination,
@@ -32,7 +38,6 @@ const Table: React.FC<TableProps> = (props) => {
     defaultPageSize: parseInt(searchParams.get(pageSizeText) ?? '1', 10),
   };
 
-  console.log('dat with pagination = ', pagination);
   return (
     <div>
       <AntTable {...props} pagination={pagination} />
