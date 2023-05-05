@@ -43,7 +43,12 @@ export default {
   parameters: {
     reactRouter: {
       routerPath: '/table',
-      searchParams: { page: '4', pageSize: '10' },
+      searchParams: {
+        page: '4',
+        pageSize: '10',
+        sortField: 'name',
+        sortOrder: 'ascend',
+      },
     },
   },
   argTypes: {},

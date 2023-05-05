@@ -15,9 +15,13 @@ const Table: React.FC<TableProps> = (props) => {
   const defaultParams = {
     pageText: 'page',
     pageSizeText: 'pageSize',
-    sortText: 'sort',
+    sortOrderText: 'sortOrder',
+    sortFieldText: 'sortField',
   };
-  const { pageText, pageSizeText, sortText } = { ...defaultParams, ...params };
+  const { pageText, pageSizeText, sortOrderText, sortFieldText } = {
+    ...defaultParams,
+    ...params,
+  };
   const [searchParams] = useSearchParams();
   const [paginationData, setPaginationData] = useState();
   const location = useLocation();
