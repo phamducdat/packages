@@ -23,7 +23,7 @@ const Table: React.FC<TableProps> = (props) => {
     ...defaultParams,
     ...params,
   };
-  const [searchParams] = useSearchParams();
+  const [searchParams, setSearchParams] = useSearchParams();
   const [customColumns, setCustomColumns] = useState<ColumnsType<any>>();
   const { columns } = props;
 
@@ -59,9 +59,29 @@ const Table: React.FC<TableProps> = (props) => {
     defaultPageSize: parseInt(searchParams.get(pageSizeText) ?? '1', 10),
   };
 
+  const onChange: TableProps['onChange'] = (
+    pagination: any,
+    filters: any,
+    sorter: any,
+    extra: any
+  ) => {
+    const field = sorter.field;
+    const order = sorter.order;
+    const params = new URLSearchParams(searchParams);
+
+    params.set(sortFieldText, field);
+    params.set(sortOrderText, order);
+    setSearchParams(params.toString());
+  };
+
   return (
     <div>
-      <AntTable {...props} pagination={pagination} columns={customColumns} />
+      <AntTable
+        {...props}
+        pagination={pagination}
+        columns={customColumns}
+        onChange={onChange}
+      />
     </div>
   );
 };
