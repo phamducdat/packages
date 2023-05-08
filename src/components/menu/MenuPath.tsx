@@ -7,7 +7,7 @@ import {
 
 export interface MenuPathProps extends Omit<MenuProps, 'items'> {
   items?: ItemPathType[] | [];
-  path?: string;
+  path: string;
   onPathChange?: (path: string) => void;
 }
 
@@ -17,13 +17,12 @@ const MenuPath: React.FC<MenuPathProps> = ({
   onPathChange,
   ...restProps
 }) => {
-  const [currentPath, setCurrentPath] = useState<string>(path || '');
   const [openKeys, setOpenKeys] = useState<string[]>([]);
   const [selectedKeys, setSelectedKeys] = useState<string[]>([]);
 
   useEffect(() => {
-    if (currentPath) {
-      const pathSegments = currentPath.split('/').filter((i) => i);
+    if (path) {
+      const pathSegments = path.split('/').filter((i) => i);
       const lastSegment = pathSegments.pop();
       const restSegment = pathSegments;
       setSelectedKeys([`/${lastSegment}`]);
@@ -33,7 +32,7 @@ const MenuPath: React.FC<MenuPathProps> = ({
         })
       );
     }
-  }, [currentPath]);
+  }, [path]);
 
   return (
     <div>
@@ -45,7 +44,7 @@ const MenuPath: React.FC<MenuPathProps> = ({
         onSelect={(value: any) => {
           const keyPath = value.keyPath;
           const path = keyPath
-            .filter((p: any) => p)
+            .filter((p: never) => p)
             .reverse()
             .join('');
           if (onPathChange) {
