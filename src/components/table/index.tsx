@@ -65,12 +65,24 @@ const Table: React.FC<TableProps> = (props) => {
     sorter: any,
     extra: any
   ) => {
-    const field = sorter.field;
-    const order = sorter.order;
     const params = new URLSearchParams(searchParams);
 
-    params.set(sortFieldText, field);
-    params.set(sortOrderText, order);
+    if (extra.action === 'sort') {
+      const field = sorter.field;
+      const order = sorter.order;
+
+      params.set(sortFieldText, field);
+      params.set(sortOrderText, order);
+    }
+
+    if (extra.action === 'paginate') {
+      const current = pagination.current;
+      const pageSize = pagination.pageSize;
+
+      params.set(pageText, current);
+      params.set(pageSizeText, pageSize);
+    }
+
     setSearchParams(params.toString());
   };
 
