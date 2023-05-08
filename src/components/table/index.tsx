@@ -6,7 +6,7 @@ import {
 } from 'antd';
 import { ConfigContext } from '../config-provider/ConfigContext';
 import { useSearchParams } from 'react-router-dom';
-import { ColumnProps } from 'antd/es/table';
+import { ColumnsType } from 'antd/es/table';
 
 export type TableProps = AntTableProps<any>;
 
@@ -24,13 +24,34 @@ const Table: React.FC<TableProps> = (props) => {
     ...params,
   };
   const [searchParams] = useSearchParams();
+  const [customColumns, setCustomColumns] = useState<ColumnsType<any>>();
   const { columns } = props;
-  const [customColumns, setCustomColumns] = useState<ColumnProps<any>>();
 
-  // useEffect(() => {
-  //   const sortField = searchParams.get(sortFieldText)?.toString() ?? '';
-  //   columns.fil;
-  // }, [searchParams]);
+  function updateColumns(dataIndex: string, newProperties: object) {
+    return columns?.map((element) => {
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+      // @ts-ignore
+      if (element.dataIndex === dataIndex) {
+        return {
+          ...element,
+          ...newProperties,
+        };
+      }
+      return element;
+    });
+  }
+
+  useEffect(() => {
+    const dataIndex = searchParams.get(sortFieldText);
+    const sortOrder = searchParams.get(sortOrderText);
+    if (columns && dataIndex && sortOrder) {
+      const customColumns = updateColumns(dataIndex, {
+        sortOrder: sortOrder,
+        sorter: true,
+      });
+      setCustomColumns(customColumns);
+    }
+  }, [searchParams.get(sortFieldText), searchParams.get(sortOrderText)]);
 
   const pagination: TablePaginationConfig = {
     ...props.pagination,
@@ -40,7 +61,7 @@ const Table: React.FC<TableProps> = (props) => {
 
   return (
     <div>
-      <AntTable {...props} pagination={pagination} />
+      <AntTable {...props} pagination={pagination} columns={customColumns} />
     </div>
   );
 };

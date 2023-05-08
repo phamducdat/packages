@@ -15,6 +15,7 @@ const columns: ColumnsType<DataType> = [
   {
     title: 'Name',
     dataIndex: 'name',
+    sorter: true,
   },
   {
     title: 'Age',
