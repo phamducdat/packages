@@ -26,7 +26,7 @@ const Table: React.FC<TableProps> = ({ columns, ...restProps }) => {
   const [searchParams, setSearchParams] = useSearchParams();
   const [customColumns, setCustomColumns] = useState<ColumnsType<any>>();
 
-  function updateSortColumns(dataIndex: string, orderProperty: object) {
+  function updateSortColumns(dataIndex: string, sortOrder: string) {
     return columns?.map((element) => {
       // eslint-disable-next-line @typescript-eslint/ban-ts-comment
       // @ts-ignore
@@ -34,12 +34,12 @@ const Table: React.FC<TableProps> = ({ columns, ...restProps }) => {
         if (element.sorter) {
           return {
             ...element,
-            ...orderProperty,
+            sortOrder,
           };
         } else {
           return {
             ...element,
-            ...orderProperty,
+            sortOrder,
             sorter: true,
           };
         }
@@ -52,9 +52,9 @@ const Table: React.FC<TableProps> = ({ columns, ...restProps }) => {
     const dataIndex = searchParams.get(sortFieldText);
     const sortOrder = searchParams.get(sortOrderText);
     if (columns && dataIndex && sortOrder) {
-      const customColumns = updateSortColumns(dataIndex, {
-        sortOrder: sortOrder,
-      });
+      const customColumns = updateSortColumns(dataIndex, sortOrder);
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+      // @ts-ignore
       setCustomColumns(customColumns);
     }
   }, [searchParams.get(sortFieldText), searchParams.get(sortOrderText)]);
