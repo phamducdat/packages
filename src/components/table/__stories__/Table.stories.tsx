@@ -20,6 +20,7 @@ const columns: ColumnsType<DataType> = [
   {
     title: 'Age',
     dataIndex: 'age',
+    sorter: true,
   },
   {
     title: 'Address',

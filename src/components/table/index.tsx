@@ -10,7 +10,7 @@ import { ColumnsType } from 'antd/es/table';
 
 export type TableProps = AntTableProps<any>;
 
-const Table: React.FC<TableProps> = (props) => {
+const Table: React.FC<TableProps> = ({ columns, ...restProps }) => {
   const config = useContext(ConfigContext);
   const params = config.table?.params ?? {};
   const defaultParams = {
@@ -25,7 +25,6 @@ const Table: React.FC<TableProps> = (props) => {
   };
   const [searchParams, setSearchParams] = useSearchParams();
   const [customColumns, setCustomColumns] = useState<ColumnsType<any>>();
-  const { columns } = props;
 
   function updateColumns(dataIndex: string, newProperties: object) {
     return columns?.map((element) => {
@@ -54,7 +53,7 @@ const Table: React.FC<TableProps> = (props) => {
   }, [searchParams.get(sortFieldText), searchParams.get(sortOrderText)]);
 
   const pagination: TablePaginationConfig = {
-    ...props.pagination,
+    ...restProps.pagination,
     defaultCurrent: parseInt(searchParams.get(pageText) ?? '1', 10),
     defaultPageSize: parseInt(searchParams.get(pageSizeText) ?? '1', 10),
   };
@@ -84,12 +83,13 @@ const Table: React.FC<TableProps> = (props) => {
     }
 
     setSearchParams(params.toString());
+    restProps.onChange?.(pagination, filters, sorter, extra);
   };
 
   return (
     <div>
       <AntTable
-        {...props}
+        {...restProps}
         pagination={pagination}
         columns={customColumns}
         onChange={onChange}
