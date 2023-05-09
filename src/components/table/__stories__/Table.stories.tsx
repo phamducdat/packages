@@ -20,7 +20,7 @@ const columns: ColumnsType<DataType> = [
   {
     title: 'Age',
     dataIndex: 'age',
-    sorter: true,
+    sorter: (a, b) => a.age - b.age,
   },
   {
     title: 'Address',
@@ -33,7 +33,7 @@ for (let i = 0; i < 46; i++) {
   data.push({
     key: i,
     name: `Edward King ${i}`,
-    age: 32,
+    age: i,
     address: `London, Park Lane no. ${i}`,
   });
 }

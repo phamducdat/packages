@@ -26,15 +26,23 @@ const Table: React.FC<TableProps> = ({ columns, ...restProps }) => {
   const [searchParams, setSearchParams] = useSearchParams();
   const [customColumns, setCustomColumns] = useState<ColumnsType<any>>();
 
-  function updateColumns(dataIndex: string, newProperties: object) {
+  function updateSortColumns(dataIndex: string, orderProperty: object) {
     return columns?.map((element) => {
       // eslint-disable-next-line @typescript-eslint/ban-ts-comment
       // @ts-ignore
       if (element.dataIndex === dataIndex) {
-        return {
-          ...element,
-          ...newProperties,
-        };
+        if (element.sorter) {
+          return {
+            ...element,
+            ...orderProperty,
+          };
+        } else {
+          return {
+            ...element,
+            ...orderProperty,
+            sorter: true,
+          };
+        }
       }
       return element;
     });
@@ -44,9 +52,8 @@ const Table: React.FC<TableProps> = ({ columns, ...restProps }) => {
     const dataIndex = searchParams.get(sortFieldText);
     const sortOrder = searchParams.get(sortOrderText);
     if (columns && dataIndex && sortOrder) {
-      const customColumns = updateColumns(dataIndex, {
+      const customColumns = updateSortColumns(dataIndex, {
         sortOrder: sortOrder,
-        sorter: true,
       });
       setCustomColumns(customColumns);
     }
